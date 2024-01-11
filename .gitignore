@@ -1,8 +1,10 @@
 
-# my exclusions
-.DS_Store# Logs
+# my project-wide exclusions
+.DS_Store
 
 # from github gitignore template
+
+# Logs
 logs
 *.log
 npm-debug.log*
