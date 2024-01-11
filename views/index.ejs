@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+
+      <!-- Title -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="bigHeading">My life in daily entries.</h1>
+        </div>
+        <div class="col-lg-6">
+          <img class="titleImage" src="images/joerg.png" alt="picture of Jörg with sunglasses">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="whiteSection" id="content">
+    <div class="container-fluid">
+
+      <div class="row">
+      <!-- left-hand side list of entries -->
+        <div class="col-sm-2">
+          <form action="/newEntry" method="POST">
+            <button type="submit" class="btn btn-outline-secondary">New Entry</button>
+          </form>
+          <hr>
+          <p><%= date %> ⬅️</p>
+          <form action="/selectEntry" method="POST">
+            <% for (let i = locals.datesList.length - 1; i > -1 ; i--) { %>
+              <p>
+                <input type="submit" class="btn btn-secondary btn-sm" name="date" value=<%= datesList[i] %>>
+              </p>
+            <% } %>
+          </form>
+        </div>
+      <!-- main area entry content -->
+        <div class="col-sm">
+          <form action="/editEntry" method="POST">
+            <button type="submit" class="btn btn-outline-secondary">Edit Entry</button>
+          </form>
+          <hr>
+
+          <% if (locals.content) { %>
+                <h6>
+                  <%= tagline %>
+                </h6>
+                <p>
+                <%= content %>
+                </p>
+          <% } %>
+          <form action="/deleteEntry" method="POST">
+            <button type="submit" class="btn btn-outline-secondary">Delete Entry</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+<%- include("partials/footer.ejs") %>
