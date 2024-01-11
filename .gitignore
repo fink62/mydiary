@@ -1,4 +1,8 @@
-# Logs
+
+# my exclusions
+.DS_Store# Logs
+
+# from github gitignore template
 logs
 *.log
 npm-debug.log*
@@ -128,6 +132,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# my exclusions
-.DS_Store
