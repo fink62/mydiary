@@ -1,10 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
+import morgan from "morgan";
 
 const app = express();
 const port = 3000;
 
 app.set('view engine', 'ejs');
+app.use(morgan("combined"));
 
 var diary = [];
 var currentPointer = 0;
