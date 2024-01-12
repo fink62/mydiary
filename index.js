@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 app.set('view engine', 'ejs');
-app.use(morgan("combined"));
+app.use(morgan("tiny"));
 
 var diary = [];
 var currentPointer = 0;
