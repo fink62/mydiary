@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Navbar **/
 .navbar {
-    padding-bottom: 4.5rem;
+    padding-bottom: 8px;
 }
 
 .navbar-brand {
@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #title .container-fluid {
     text-align: left;
-    padding: 2% 10%;
+    padding: 2% 2%;
 }
 
 .titleImage {

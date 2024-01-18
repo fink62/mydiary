@@ -62,6 +62,14 @@ app.get("/", (req, res) => {
   renderIndex(res, p);
 });
 
+// Re-Init array
+app.post("/init", (req, res) => {
+  initiateDiary();
+  const p = diary.length - 1;
+
+  renderIndex(res, p);
+});
+
 // Open new entry page from button
 app.post("/newEntry", (req, res) => {
     res.render("newEntry");
