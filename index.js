@@ -54,20 +54,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 initiateDiary();
 
-// default GET request when starting web app page
+// default GET request
 app.get("/", (req, res) => {
-  //show last entry content
-  const p = diary.length - 1;
-  
+  const p = currentPointer;
+
   renderIndex(res, p);
 });
 
 // Re-Init array
 app.post("/init", (req, res) => {
   initiateDiary();
-  const p = diary.length - 1;
+  currentPointer = diary.length - 1;
 
-  renderIndex(res, p);
+  res.redirect("/");
 });
 
 // Open new entry page from button
@@ -87,7 +86,9 @@ app.post("/submitNewEntry", (req, res) => {
     entryContent : req.body.entryContent
   };
 
-  renderIndex(res, p);
+  currentPointer = p;
+
+  res.redirect("/");
 });
 
 // select entry from list (clicked a button on right hand side list)
@@ -99,7 +100,7 @@ app.post("/selectEntry", (req, res) => {
       break;
     }
   }
-  renderIndex(res, p);
+  res.redirect("/");
 });
 
 // Edit entry page route
@@ -120,7 +121,7 @@ app.post("/updateEntry", (req, res) => {
   diary[p].entryTagline = req.body.entryTagline;
   diary[p].entryContent = req.body.entryContent;
 
-  renderIndex(res, p);
+  res.redirect("/");
 });
 
 // Delete entry page route
@@ -141,7 +142,9 @@ app.post("/deleteEntry", (req, res) => {
     };
   }
 
-  renderIndex(res, p);
+  currentPointer = p;
+
+  res.redirect("/");
 });
 
 app.listen(port, () => {
